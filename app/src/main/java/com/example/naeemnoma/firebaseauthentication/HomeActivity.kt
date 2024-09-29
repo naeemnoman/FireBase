@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         binding.logoutBtn.setOnClickListener() {
 
             viewModels.singOut()
-            startActivity(Intent(this@HomeActivity, RegistrationActivity::class.java))
+            startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
         }
     }
 }

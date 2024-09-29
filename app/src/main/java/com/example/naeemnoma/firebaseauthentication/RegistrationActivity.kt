@@ -21,11 +21,13 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(AuthViewModels::class.java)
+
         binding.registerBtn.setOnClickListener {
 
             val email = binding.emailEt.text.toString()
             val password = binding.emailPasswordEt.text.toString()
             val confirmPassword = binding.ConfrimPasswordEt.text.toString()
+
             if(email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
                 Toast.makeText(this@RegistrationActivity, "Register Success", Toast.LENGTH_SHORT).show()
 
@@ -38,14 +40,16 @@ class RegistrationActivity : AppCompatActivity() {
                 viewModel.singUp(email, password).observe(this,{result->
                     Toast.makeText(this@RegistrationActivity, result, Toast.LENGTH_SHORT).show()
 
-                    if(result.equals("Singup Success")){
-                        startActivity(Intent(this@RegistrationActivity, HomeActivity::class.java))
+                    if(result.equals("SingUp Success")){
+                        startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                     }
             })
         }
-            binding.AlreadyHaveAnAccountTxt.setOnClickListener {
-                startActivity(Intent(this@RegistrationActivity, MainActivity::class.java))
-            }
+
+        }
+
+        binding.AlreadyHaveAnAccountTxt.setOnClickListener {
+            startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
         }
 
 

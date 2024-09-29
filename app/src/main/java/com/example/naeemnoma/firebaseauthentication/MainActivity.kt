@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this@MainActivity, RegistrationActivity::class.java))
-        },  20000)
+        },  2000)
     }
 }

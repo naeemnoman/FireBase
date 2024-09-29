@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.emailEt.text.toString()
             val password = binding.emailPasswordEt.text.toString()
 
-            if(email.isNotEmpty() && password.isNotEmpty()){
+            if(email.isEmpty() && password.isEmpty()){
                 Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
 
                 viewModels.singIn(email, password)
@@ -53,12 +53,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity, RegistrationActivity::class.java))
         }
 
-        fun onStart() {
-            super.onStart()
-            if (FirebaseAuth.getInstance().currentUser != null) {
-                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
-            }
-        }
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+        }
     }
 }
