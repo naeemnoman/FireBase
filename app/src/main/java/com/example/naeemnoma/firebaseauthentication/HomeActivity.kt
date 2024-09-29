@@ -1,5 +1,6 @@
 package com.example.naeemnoma.firebaseauthentication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModels = ViewModelProvider(this).get()
+        viewModels = ViewModelProvider(this).get(AuthViewModels::class.java)
+        binding.logoutBtn.setOnClickListener() {
+
+            viewModels.singOut()
+            startActivity(Intent(this@HomeActivity, RegistrationActivity::class.java))
+        }
     }
 }
